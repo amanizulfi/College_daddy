@@ -52,21 +52,7 @@ function displayBranches(semesterId) {
 
 function displaySubjects(semesterId, branchId) {
     const semester = window.notesData.semesters.find(s => s.id === semesterId);
-fix-branch-selection-error
-    const branch = semester.branches?.find(b => 
-        b?.name?.toLowerCase() === branchName?.toLowerCase()
-    );
-
-    if (!branch) {
-        console.warn(`No data found for branch: ${branchName}`);
-        showError('No notes available for this branch yet.');
-        return;
-    }
-
-
-
     const branch = semester.branches.find(b => b.id === branchId);
-main
     const content = document.getElementById('content');
     content.innerHTML = '';
 
@@ -141,7 +127,6 @@ function displayMaterials(semesterId, branchId, subjectId) {
     navigationState.branch = branchId;
     navigationState.subject = subjectId;
     updateBreadcrumb();
-fix-branch-selection-error
 }
 
 // Function to safely add new material and prevent duplicates
@@ -182,6 +167,3 @@ function addMaterial(semesterId, branchName, subjectName, newMaterial) {
     // Optionally save or update JSON file (depends on backend)
     console.log(`Added material "${newMaterial.title}" successfully.`);
 }
-
-}
-main
